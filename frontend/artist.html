@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/styles.css">
+  <title>{{ .Artist.Name }} - Details</title>
+</head>
+<body>
+  <div class="artist-details-container">
+    <a href="/" class="back-link">← Back to Artists</a>
+    <div class="artist-details">
+      <img src="{{ .Artist.Image }}" alt="{{ .Artist.Name }}">
+      <h1>{{ .Artist.Name }}</h1>
+      <p><b>Members:</b> {{ range $i, $m := .Artist.Members }}{{ if $i }}, {{ end }}{{ $m }}{{ end }}</p>
+      <p><b>Creation Date:</b> {{ .Artist.CreationDate }}</p>
+      <p><b>First Album:</b> {{ .Artist.FirstAlbum }}</p>
+    </div>
+
+    <h2>Concerts</h2>
+    <div class="concerts">
+      {{ range $location, $dates := .Concerts }}
+        <div class="concert-block">
+          <p>
+  <b>Location:</b>
+  <span class="location-name">{{ $location }}</span>
+</p>
+          <ul>
+            {{ range $dates }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</body>
+</html>

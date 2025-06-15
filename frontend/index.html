@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/styles.css">
+  <title>Groupie Tracker</title>
+</head>
+<body>
+  <br>
+  <h1>Groupie Tracker</h1>
+  <br>
+  <div class="artists">
+    {{ range .Artists }}
+    <a href="/artist/{{ .ID }}" class="artist">
+      <img src="{{ .Image }}" alt="{{ .Name }}">
+      <h3>{{ .Name }}</h3>
+    </a>
+    {{ else }}
+      <p>No artists found</p>
+    {{ end }}
+  </div>
+</body>
+</html>
